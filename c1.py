@@ -3,6 +3,8 @@
 
 import requests
 from bs4 import BeautifulSoup
+import random
+import re # 正则表达式
 
 #爬豆瓣评论
 def douban():
@@ -185,6 +187,55 @@ def create_user(type):
         return Guest('gu1', 201)
         # raise ValueError('error')
 
+def demo_exception():
+    try:
+        print 2 / 1
+        # print 2 / 0
+        # if type == 'c':
+        raise Exception('Raise Error', 'NowCoder') # 主动抛出异常
+
+    except Exception as e:
+        print 'error:', e
+
+    finally:
+        print 'clean up'
+
+def demo_random():# (伪)随机数
+    # 1 - 100
+    # 随机数种子决定随机序列（若不设置seed默认用系统时间做种子来保证每次随机结果不同）
+    # random.seed(1)
+    # x = prex * 100007 % xxxx
+    # prex  = x 幂等性
+    print 1, int(random.random() * 100)
+    print 2, random.randint(0, 200)
+    print 3, random.choice(range(0, 100, 10))
+    print 4, random.sample(range(0, 100), 4)
+    a = [1, 2, 3, 4, 5]
+    random.shuffle(a) # 打乱
+    print 5, a
+
+def demo_re():
+    str = 'abc123def12gh15'
+    p1 = re.compile('[\d]+') # \d 匹配数字
+    p2 = re.compile('\d')
+    print 1, p1.findall(str)
+    print 2, p2.findall(str)
+    # \t\n
+    str = 'a@163.com;b@gmail.com;c@qq.com;e0@163.com;z@qq.com'
+    p3 = re.compile('[\w]+@[163|qq]+\.com') # \w 匹配数字+字母
+    print 3, p3.findall(str)
+
+    str = '<html><h>title</h><body>xxx</body></html>'
+    p4 = re.compile('<h>[^<]+</h>')
+    print 4, p4.findall(str)
+    p4 = re.compile('<h>([^<]+)</h><body>([^<]+)</body>')
+    print 5, p4.findall(str)
+
+    str = 'xx2016-06-11yy'
+    p5 = re.compile('\d{4}-\d{2}-\d{2}')
+    p6 = re.compile('\d\d\d\d-\d\d-\d\d')
+    print p5.findall(str)
+    print p6.findall(str)
 
 
 if __name__ == '__main__':
@@ -199,9 +250,15 @@ if __name__ == '__main__':
     # demo_set()
 
     #多态演示测试
+    #块注释
+    '''
     user1 = User('u1', 1)
     print user1
     admin1 = Admin('a1', 101, 'g1')
     print admin1
 
     print create_user('USERX')
+    '''
+    # demo_exception()
+    # demo_random()
+    demo_re()
