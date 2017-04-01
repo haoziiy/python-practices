@@ -24,4 +24,4 @@ urllib2.install_opener(opener)
 response3 = urllib2.urlopen(url)
 print response3.getcode()
 print cj
-print response3
+print response3.read()
