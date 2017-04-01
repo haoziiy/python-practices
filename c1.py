@@ -238,7 +238,7 @@ def demo_re():
     print p6.findall(str)
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
     #print 'Hello world!'
     # comment
     # demo_string()
@@ -261,4 +261,4 @@ if __name__ == '__main__':
     '''
     # demo_exception()
     # demo_random()
-    demo_re()
+    # demo_re()

@@ -1,5 +1,5 @@
-# coding=utf-8
-from flask import Flask
+#-*- coding: utf-8 -*-
+from flask import Flask, render_template
 
 # 定义一个应用
 app = Flask(__name__)
@@ -10,9 +10,9 @@ app = Flask(__name__)
 def index():
     return 'HELLO'
 
-@app.route('/profile/<int:uid>/')
+@app.route('/profile/<int:uid>/',methods=['get','post'])
 def profile(uid):
-    return 'profile:' + str(uid)
+    return render_template("profile.html", uid)
 
 if __name__ == '__main__':
-    app.run(debug=True) # 开发者模式
+    app.run(debug=True)
