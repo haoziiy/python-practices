@@ -20,7 +20,7 @@ def commit():
 
 
 def set_sys_time(year, month, day):
-    os.system('date -jnRu %04d%02d%02d' % (year, month, day))
+    os.system('date -set %04d%02d%02d' % (year, month, day))
 
 
 def trick_commit(year, month, day):
